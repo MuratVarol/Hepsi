@@ -22,7 +22,7 @@
                 app:itemClickListener="@{viewModel.itemClickListener}"
                 app:itemLayoutId="@{@layout/item_movie_list_container}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:itemList="@{viewModel.startScreenMovieList}"
+                app:itemList="@{viewModel.list}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
