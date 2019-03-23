@@ -12,7 +12,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.varol.hepsi"
+        applicationId buildConfig.applicationId
         minSdkVersion buildConfig.minSdk
         targetSdkVersion buildConfig.minSdk
         versionCode generateVersionCode()
