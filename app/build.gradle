@@ -1,0 +1,87 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+//comment below apply code to disable "'variant.getExternalNativeBuildTasks()' is obsolete" error
+//apply plugin: 'io.fabric'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.varol.hepsi"
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.minSdk
+        versionCode generateVersionCode()
+        versionName generateVersionName()
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        dataBinding.enabled = true
+    }
+
+    // to support experimental extensions such as synthetic, @Parcelize etc
+    androidExtensions {
+        experimental = true
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation deps.kotlin.stdlib.jdk
+    implementation deps.androidx.core
+    implementation deps.androidx.appCompat
+    implementation deps.androidx.constraintLayout
+    implementation deps.androidx.recyclerView
+    implementation deps.androidx.cardView
+    implementation deps.androidx.supportLibrary
+    implementation deps.androidx.lifeCycle
+    implementation deps.androidx.liveData
+
+    implementation deps.okhttp.client
+
+    implementation deps.room.base
+    kapt deps.room.compiler
+    implementation deps.room.rxJava
+
+    implementation deps.koin.base
+    implementation deps.koin.scope
+    implementation deps.koin.viewModel
+
+    implementation deps.retrofit.client
+    implementation deps.retrofit.convertorGson
+    implementation deps.retrofit.rxJavaAdapter
+
+    implementation deps.rx.java
+    implementation deps.rx.android
+
+    implementation deps.glide.main
+
+    kapt deps.glide.compiler
+
+    releaseImplementation deps.chuckOkHttp.release
+    debugImplementation deps.chuckOkHttp.debug
+
+    implementation deps.navigationBar
+
+
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.2-alpha02'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha02'
+
+}
