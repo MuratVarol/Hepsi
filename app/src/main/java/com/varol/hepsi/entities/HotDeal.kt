@@ -8,7 +8,7 @@ import java.util.*
 data class HotDeal(
     val title : String?,
     val expirationDate : String?
-) : Parcelable{
+) : Parcelable, Model() {
     val getValidThruDate : Date?
     get() {
        return Calendar.getInstance().time

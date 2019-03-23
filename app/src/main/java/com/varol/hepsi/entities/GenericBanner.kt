@@ -6,4 +6,4 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class GenericBanner(
     val image: ImageModel?
-) : Parcelable
+) : Parcelable, Model()
