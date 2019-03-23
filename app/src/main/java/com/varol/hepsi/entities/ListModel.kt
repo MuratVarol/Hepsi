@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName
 
 data class ListModel(
     @SerializedName("hotDeals")
-    val hotDeals: List<HotDeal>,
+    val hotDeals: MutableList<HotDeal>,
 
     @SerializedName("banners")
-    val banners: List<GenericBanner>
+    val banners: MutableList<GenericBanner>
 
 )
