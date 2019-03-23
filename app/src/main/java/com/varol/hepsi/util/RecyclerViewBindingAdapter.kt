@@ -12,13 +12,12 @@ import com.varol.hepsi.util.listener.ItemClickListener
 
 
 @BindingAdapter(
-    value = ["itemList", "itemLayoutId", "dividerEnabled", "itemClickListener", "verticalSpace", "dividerDrawableId", "dividerHorizontalDrawableId", "snapEnabled"],
+    value = ["itemList", "dividerEnabled", "itemClickListener", "verticalSpace", "dividerDrawableId", "dividerHorizontalDrawableId", "snapEnabled"],
     requireAll = false
 )
 fun bindRecyclerView(
     recyclerView: RecyclerView,
     itemList: List<Nothing>?,
-    itemLayoutId: Int,
     dividerEnabled: Boolean,
     itemClickListener: ItemClickListener<Nothing>?,
     verticalSpace: Int = 0,
@@ -30,7 +29,7 @@ fun bindRecyclerView(
     clearDecorations(recyclerView)
 
     if (recyclerView.adapter == null) {
-        val adapter = createAdapter(itemList, itemLayoutId, itemClickListener)
+        val adapter = createAdapter(itemList, itemClickListener)
         setDefaultLayoutManager(recyclerView)
         recyclerView.adapter = adapter
     } else {
@@ -123,13 +122,11 @@ private fun clearDecorations(recyclerView: RecyclerView) {
 
 private fun createAdapter(
     modelList: List<Nothing>,
-    layoutId: Int,
     itemClickListener: ItemClickListener<Nothing>?
 )
         : BaseRecyclerAdapter<Nothing> {
     return AdapterBuilder(
         modelList,
-        layoutId,
         itemClickListener
     ).build()
 }
