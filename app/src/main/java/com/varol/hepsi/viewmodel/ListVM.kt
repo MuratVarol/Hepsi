@@ -5,6 +5,8 @@ import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.varol.hepsi.base.BaseVM
 import com.varol.hepsi.entities.GenericBanner
+import com.varol.hepsi.entities.HotDeal
+import com.varol.hepsi.entities.Model
 import com.varol.hepsi.remote.DataHolder
 import com.varol.hepsi.usecases.GetListUseCase
 import com.varol.hepsi.util.SingleLiveEvent
@@ -17,13 +19,13 @@ class ListVM(
 
     val isNeedToResetScrollState = SingleLiveEvent<Boolean>()
 
-    val list = MutableLiveData<MutableList<GenericBanner>>()
+    val list = MutableLiveData<MutableList<Model>>()
 
     val isLoading = SingleLiveEvent<Boolean>()
     val isRefreshing = SingleLiveEvent<Boolean>()
 
-    val itemClickListener = object : ItemClickListener<GenericBanner> {
-        override fun onItemClick(view: View, item: GenericBanner, position: Int) {
+    val itemClickListener = object : ItemClickListener<Any> {
+        override fun onItemClick(view: View, item: Any, position: Int) {
             Log.v("test", position.toString())
         }
     }
@@ -46,12 +48,8 @@ class ListVM(
 
                 when (data) {
                     is DataHolder.Success -> {
-                        if (page == 0) {
-                            list.postValue(data.data.banners)
-                            Log.wtf("bannersize", list.value?.size.toString())
-                        } else {
-                            list += data.data.banners
-                        }
+
+                        mixItems(data.data.banners, data.data.hotDeals)
                     }
                     is DataHolder.Error -> {
                         errorMessage.postValue("Veriler çekilemedi")
@@ -60,6 +58,20 @@ class ListVM(
             }
 
         disposables.add(disposable)
+    }
+
+    private fun mixItems(bannerList: MutableList<GenericBanner>, hotDealList: MutableList<HotDeal>) {
+        val maxSize = if (bannerList.size >= hotDealList.size) bannerList.size else hotDealList.size
+
+        for (i in 0..maxSize) {
+            if (bannerList.size > i)
+                list += mutableListOf(bannerList[i] as Model)
+
+            if (bannerList.size > i)
+                list += mutableListOf(hotDealList[i] as Model)
+        }
+
+
     }
 
 }
