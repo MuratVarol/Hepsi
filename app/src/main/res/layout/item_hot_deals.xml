@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+>
+    <data>
+        <variable
+                name="model"
+                type="com.varol.hepsi.entities.HotDeal"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+    >
+        <TextView
+                android:id="@+id/tv_deal_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.title}"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Hot Deal #4"
+        />
+
+        <TextView
+                android:id="@+id/tv_deal_remaining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.expirationDate}"
+                app:layout_constraintTop_toBottomOf="@+id/tv_deal_name"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                tools:text="Time Remaining : 16 seconds"
+
+        />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
