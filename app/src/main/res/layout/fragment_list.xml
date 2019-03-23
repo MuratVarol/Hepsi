@@ -26,7 +26,6 @@
                     android:orientation="vertical"
                     app:itemClickListener="@{viewModel.itemClickListener}"
                     app:dividerDrawableId="@{@drawable/line_horizontal}"
-                    app:itemLayoutId="@{@layout/item_banner}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:itemList="@{viewModel.list}"
                     app:layout_constraintBottom_toBottomOf="parent"
