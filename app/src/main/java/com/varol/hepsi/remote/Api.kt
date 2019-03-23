@@ -6,8 +6,8 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface Api {
-    @GET("/{page}")
+    @GET("{page}")
     fun getDealList(
         @Path("page") page: Int
-    ): Single<MutableList<ListModel>>
+    ): Single<ListModel>
 }
