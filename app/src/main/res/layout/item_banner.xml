@@ -17,10 +17,10 @@
         <ImageView
                 android:id="@+id/ivPoster"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:layout_constraintDimensionRatio="2:1"
+                android:layout_height="wrap_content"
                 app:imageUrl="@{model.image.url}"
-                android:scaleType="center"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
