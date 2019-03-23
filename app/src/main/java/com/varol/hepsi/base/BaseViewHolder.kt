@@ -1,4 +1,4 @@
-package com.varol.hepsi.view.base
+package com.varol.hepsi.base
 
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
