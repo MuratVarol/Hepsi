@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.varol.hepsi.base.AdapterBuilder
+import com.varol.hepsi.base.BaseRecyclerAdapter
 import com.varol.hepsi.util.listener.ItemClickListener
-import com.varol.hepsi.view.base.BaseRecyclerAdapter
 
 
 @BindingAdapter(
