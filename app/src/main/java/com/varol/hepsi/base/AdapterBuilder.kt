@@ -1,7 +1,6 @@
 package com.varol.hepsi.base
 
 import com.varol.hepsi.util.listener.ItemClickListener
-import com.varol.hepsi.view.base.BaseRecyclerAdapter
 
 class AdapterBuilder<ModelType>(
     val itemList: List<ModelType>,
