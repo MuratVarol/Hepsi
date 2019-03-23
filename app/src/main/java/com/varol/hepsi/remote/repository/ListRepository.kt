@@ -9,7 +9,7 @@ class ListRepository(
     private val api : Api
 ) : BaseRepository() {
 
-    fun getDealList(page: Int): Single<DataHolder<MutableList<ListModel>>>
+    fun getDealList(page: Int): Single<DataHolder<ListModel>>
     {
         return service.sendRequest(api.getDealList(page))
     }
