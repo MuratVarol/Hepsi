@@ -15,4 +15,10 @@ class MainActivity : BaseActivity<MainVM, ActivityMainBinding>(MainVM::class) {
         loadFragment(R.id.main_container, ListFragment(),true)
 
     }
+
+    override fun onBackPressed() {
+        /**
+         * DO NOTHING
+         */
+    }
 }
