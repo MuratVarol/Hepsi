@@ -13,7 +13,7 @@ class GetListUseCase(
 
     fun getMoviesByType(
         page: Int
-    ): Single<DataHolder<MutableList<ListModel>>> {
+    ): Single<DataHolder<ListModel>> {
         return listRepository.getDealList(
             page
         )
