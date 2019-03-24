@@ -32,6 +32,7 @@ class ListFragment : BaseFragment<ListVM, FragmentListBinding>(ListVM::class) {
         subscribeResetScrollState()
         subscribeErrorMessage()
         subscribeIsRefreshing()
+        subscribeInformMessage()
 
         return binding.root
     }
@@ -46,6 +47,12 @@ class ListFragment : BaseFragment<ListVM, FragmentListBinding>(ListVM::class) {
     private fun subscribeIsRefreshing() {
         viewModel.isRefreshing.observe(this) {
             binding.srl.isRefreshing = it == true
+        }
+    }
+
+    private fun subscribeInformMessage() {
+        viewModel.informMessage.observe(this) {
+            informToast(it.toString())
         }
     }
 
