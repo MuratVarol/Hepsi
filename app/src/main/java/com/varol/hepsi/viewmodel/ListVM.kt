@@ -1,6 +1,5 @@
 package com.varol.hepsi.viewmodel
 
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.varol.hepsi.base.BaseVM
@@ -26,7 +25,7 @@ class ListVM(
 
     val itemClickListener = object : ItemClickListener<Any> {
         override fun onItemClick(view: View, item: Any, position: Int) {
-            Log.v("test", position.toString())
+            informMessage.postValue("Clicked position: $position")
         }
     }
 
@@ -38,7 +37,7 @@ class ListVM(
 
         isLoading.postValue(true)
 
-        val disposable = getListUseCase.getMoviesByType(1)
+        val disposable = getListUseCase.getMoviesByType(page)
             .subscribeOn(getBackgroundScheduler())
             .observeOn(getMainThreadScheduler())
             .subscribe { data ->
