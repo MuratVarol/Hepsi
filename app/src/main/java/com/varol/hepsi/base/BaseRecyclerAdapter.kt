@@ -46,9 +46,6 @@ class BaseRecyclerAdapter<ModelType>(
         val model = modelList[position]
         if (model is HotDeal) {
 
-            val debug = model.getExpDate
-            val pos = position
-
             holder.countDownTimer?.cancel()
             holder.countDownTimer = null
 
